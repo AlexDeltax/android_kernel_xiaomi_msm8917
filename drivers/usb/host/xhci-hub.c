@@ -301,7 +301,6 @@ static int xhci_stop_device(struct xhci_hcd *xhci, int slot_id, int suspend)
 				xhci_free_command(xhci, command);
 				goto cmd_cleanup;
 			}
-<<<<<<< HEAD
 
 			ret = xhci_queue_stop_endpoint(xhci, command, slot_id,
 					i, suspend);
@@ -309,21 +308,14 @@ static int xhci_stop_device(struct xhci_hcd *xhci, int slot_id, int suspend)
 				spin_unlock_irqrestore(&xhci->lock, flags);
 				goto err_cmd_queue;
 			}
-=======
->>>>>>> v3.18.79
 		}
 	}
 	ret = xhci_queue_stop_endpoint(xhci, cmd, slot_id, 0, suspend);
 	if (ret) {
 		spin_unlock_irqrestore(&xhci->lock, flags);
-<<<<<<< HEAD
-		goto err_cmd_queue;
-	}
-=======
 		goto cmd_cleanup;
 	}
 
->>>>>>> v3.18.79
 	xhci_ring_cmd_db(xhci);
 	spin_unlock_irqrestore(&xhci->lock, flags);
 
@@ -335,11 +327,7 @@ static int xhci_stop_device(struct xhci_hcd *xhci, int slot_id, int suspend)
 		ret = -ETIME;
 	}
 
-<<<<<<< HEAD
-err_cmd_queue:
-=======
 cmd_cleanup:
->>>>>>> v3.18.79
 	xhci_free_command(xhci, cmd);
 	return ret;
 }
