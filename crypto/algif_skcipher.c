@@ -448,10 +448,6 @@ static int skcipher_recvmsg(struct kiocb *unused, struct socket *sock,
 		char __user *from = iov->iov_base;
 
 		while (seglen) {
-<<<<<<< HEAD
-
-=======
->>>>>>> v3.18.74
 			used = ctx->used;
 			if (!used) {
 				err = skcipher_wait_for_data(sk, flags);
