@@ -1432,20 +1432,11 @@ static int fanout_add(struct sock *sk, u16 id, u16 type_flags)
 	default:
 		return -EINVAL;
 	}
-
-<<<<<<< HEAD
-	mutex_lock(&fanout_mutex);
-
-	err = -EINVAL;
-	if (!po->running)
-		goto out;
-
-	err = -EALREADY;
-=======
->>>>>>> v3.18.77
+	
 	if (po->fanout)
-		goto out;
+		return -EALREADY;
 
+	mutex_lock(&fanout_mutex);
 	match = NULL;
 	list_for_each_entry(f, &fanout_list, list) {
 		if (f->id == id &&
