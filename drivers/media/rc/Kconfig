@@ -6,6 +6,13 @@ config RC_CORE
 
 source "drivers/media/rc/keymaps/Kconfig"
 
+config SPI_PEELIR
+	tristate "PEELIR"
+	default y
+
+	---help---
+	   Enable this option if you use peelir
+
 menuconfig RC_DECODERS
         bool "Remote controller decoders"
 	depends on RC_CORE
